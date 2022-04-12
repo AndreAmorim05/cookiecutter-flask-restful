@@ -1,5 +1,5 @@
 {
-    "root_app_name": "My Awesome Project",
+    "root_app_name": "My Project Name",
     "app_name": "{{ cookiecutter.root_app_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
     "description": "Some description to my project",
     "author_name": "André Amorim",
