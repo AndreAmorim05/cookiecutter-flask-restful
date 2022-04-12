@@ -1,0 +1,53 @@
+[default]
+DEBUG = false
+FLASK_ADMIN_SWATCH = "cerulean"
+CORS_HEADERS = 'application/json'
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
+MAIL_USE_SSL = true
+MAIL_DEBUG = false
+{% if cookiecutter.use_celery == "y" %}
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+{% endif %}
+EXTENSIONS = [
+    "{{cookiecutter.app_name}}.ext.db:init_app",
+    "{{cookiecutter.app_name}}.ext.auth:init_app",
+    "{{cookiecutter.app_name}}.ext.admin:init_app",
+    "{{cookiecutter.app_name}}.ext.cli:init_app",
+    "{{cookiecutter.app_name}}.ext.api:init_app",
+    "{{cookiecutter.app_name}}.ext.hooks:init_app",
+    "{{cookiecutter.app_name}}.ext.cors:init_app",
+    "{{cookiecutter.app_name}}.ext.mail:init_app",
+    {% if cookiecutter.use_celery == "y" %}  
+    "{{cookiecutter.app_name}}.ext.celery:init_celery",
+    {% endif %}
+]
+
+[development]
+DEBUG = true
+SQLALCHEMY_DATABASE_URI = "postgresql://root:root@localhost/{{cookiecutter.app_name}}db"
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+{% if cookiecutter.use_celery == "y" %}
+{% if cookiecutter.broker == "redis" %}
+CELERY_BROKER_URL = "redis://localhost/0"
+CELERY_RESULT_BACKEND = "redis://localhost/0"
+{% else %}
+CELERY_BROKER_URL = 'pyamqp://root:root@localhost//'
+CELERY_RESULT_BACKEND = 'rpc://root:root@localhost//'
+{% endif %}
+{% endif %}
+DEBUG_TB_TEMPLATE_EDITOR_ENABLED = true
+DEBUG_TB_PROFILER_ENABLED = true
+DEBUG_TB_INTERCEPT_REDIRECTS = false
+ADMIN_NAME = "{{cookiecutter.app_name}} (dev mode)"
+MAIL_DEBUG = true
+EXTENSIONS = [
+    "dynaconf_merge",
+]
+
+
+[production]
+DEBUG = false
+SQLALCHEMY_TRACK_MODIFICATIONS = false

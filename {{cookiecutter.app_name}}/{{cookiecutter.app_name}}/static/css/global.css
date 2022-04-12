@@ -1,0 +1,78 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+a {
+  color: var(--primary);
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+.title {
+  text-transform: uppercase;
+  color: var(--title);
+}
+
+.subtitle {
+  color: var(--subtitle);
+  font-weight: 400;
+}
+
+.block {
+  margin-bottom: 120px;
+}
+
+.single-space {
+  margin-bottom: 20px;
+}
+
+.button {
+  text-transform: lowercase;
+  font-weight: 500;
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+}
+
+.button-primary {
+  /* background-color: var(--primary);
+  border-color: var(--primary); */
+  border-color: var(--primary-dark);
+  background-size: 200%;
+  background-image: linear-gradient(to right, var(--primary), var(--primary-dark) 43%, var(--primary));
+  
+}
+
+.button-primary:hover {
+  /* background-color: var(--primary-dark); */
+  border-color: var(--primary-dark);
+  background-image: linear-gradient(to left, var(--primary-dark), var(--primary) 10%, var(--primary-dark));
+}
+
+.button-primary-outline {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.button-primary-outline:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+#header .button-primary-outline {
+    /* background-color: var(--secondary); */
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+#header .button-primary-outline:hover {
+    color: #f0f0f0;
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+  }

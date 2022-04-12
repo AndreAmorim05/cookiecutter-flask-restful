@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "{{cookiecutter.root_app_name}}"
+version = "{{cookiecutter.version}}"
+description = "{{cookiecutter.description}}"
+authors = ["{{cookiecutter.author_name}} <{{cookiecutter.email}}>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^2.0.3"
+dynaconf = "^3.1.7"
+Flask-Admin = "^1.6.0"
+Flask-Login = "^0.5.0"
+Flask-RESTful = "^0.3.9"
+Flask-SQLAlchemy = "^2.5.1"
+cryptography = "^36.0.1"
+Flask-Migrate = "^3.1.0"
+PyMySQL = "^1.0.2"
+psycopg2-binary = "^2.9.3"
+Flask-QRcode = "^3.0.0"
+Flask-Cors = "^3.0.10"
+requests = "^2.27.1"
+Flask-Mail = "^0.9.1"
+httpx = "^0.22.0"
+{% if cookiecutter.use_celery == "y" %}celery = "^5.2.6"
+Werkzeug = "2.0.0"
+{% if cookiecutter.broker == "redis" %}redis = "^4.2.2"
+{% else %}PyAMQP = "^0.1.0"{% endif %}{% endif %}
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = "^22.1.0"
+flake8 = "^4.0.1"
+Flask-DebugToolbar = "^0.11.0"
+ipdb = "^0.13.9"
+ipython = "^8.1.1"
+isort = "^5.10.1"
+pytest-flask = "^1.2.0"
+pytest-cov = "^3.0.0"
+flask-shell-ipython = "^0.4.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79 # override black's default line-length
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | venv
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+# make it compatible with black
+profile = "black" 

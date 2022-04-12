@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página não encontrada</title>
+    {% raw %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/errors/style.css') }}">
+    {% endraw %}
+</head>
+<body>
+        {% raw %}
+        <img class="img-fluid" src="{{ url_for('static', filename='assets/errors/undraw_not_found_-60-pq.svg') }}" alt="vector">
+        {% endraw %}
+        <div class="wrapper">
+    <h1>Página não encontrada</h1>
+        <p class="message">Infelizmente a página não foi encontrada ou não existe. Por favor tente um local diferente</p>
+        <a href="/" class="btn">Voltar à pagina inicial</a>
+        </div>
+</body>
+</html>

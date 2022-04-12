@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Error</title>
+    {% raw %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/errors/style.css') }}">
+    {% endraw %}
+</head>
+<body>
+        {% raw %}
+        <img src="{{ url_for('static', filename='undraw_warning_cyit.svg') }}" alt="vector">
+        {% endraw %}
+        <div class="wrapper">
+    <h1>Ops, estamos enfrentando um erro</h1>
+        <p class="message">No momento esta página está em manutenção, em breve tudo estará funcionando normalmente</p>
+        <a href="/" class="btn">Voltar à pagina inicial</a>
+        </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% raw %}
+{% extends 'base.html' %} 
+{% endraw %}
+
+{% raw %}
+{% block content %}
+<div id="login" class="block">
+  <div class="container pt-5 mt-5">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 align-self-center mb-md-0 mb-4">
+        <form method="POST">
+          <h1 class="title text-center">LOGIN</h1>
+          <input
+            type="email"
+            class="form-control single-space"
+            aria-describedby="emailHelp"
+            name="email"
+            placeholder="Email"
+          />
+          <input
+            type="password"
+            class="form-control single-space"
+            aria-describedby="emailHelp"
+            name="password"
+            placeholder="Password"
+          />
+          <!-- <h4 class="mb-4">Em poucos cliques e em qualquer lugar</h4> -->
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="exampleCheck1"
+            name="remember"
+          />
+          <label class="form-check-label subtitle" for="exampleCheck1"
+            >Keep me connected</label
+          >
+
+          <div class="text-center mt-3">
+            <button
+              type="submit"
+              class="button btn btn-primary button-primary d-md-inline-block d-block mb-md-0 mb-2 mr-md-2"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+        <!-- <a href="#"
+            class="button btn btn-outline-primary button-primary-outline d-md-inline-block d-block"
+            >Contato</a> -->
+      </div>
+      <div class="col-lg-8 col-md-6 align-self-center text-center">
+        
+        <img
+          src="{{url_for('static',filename='assets/undraw_security_on_re_e491.svg')}}"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% endraw %}
