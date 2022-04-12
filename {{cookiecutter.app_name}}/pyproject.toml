@@ -21,9 +21,9 @@ Flask-Cors = "^3.0.10"
 requests = "^2.27.1"
 Flask-Mail = "^0.9.1"
 httpx = "^0.22.0"
-{% if cookiecutter.use_celery == "y" %}celery = "^5.2.6"
+{% if cookiecutter.celery_worker != "Do not use Celery" %}celery = "^5.2.6"
 Werkzeug = "2.0.0"
-{% if cookiecutter.broker == "redis" %}redis = "^4.2.2"
+{% if cookiecutter.celery_worker == "Redis" %}redis = "^4.2.2"
 {% else %}PyAMQP = "^0.1.0"{% endif %}{% endif %}
 
 [tool.poetry.dev-dependencies]

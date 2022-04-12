@@ -7,7 +7,7 @@ def remove_celery_files():
     os.remove("worker.py")
 
 def main():
-    if "{{cookiecutter.root_app_name}}" != "y":
+    if "{{cookiecutter.celery_worker}}" == "Do not use Celery":
         remove_celery_files()
 
 if __name__ == "__main__":

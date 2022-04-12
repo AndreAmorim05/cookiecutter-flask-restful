@@ -21,9 +21,9 @@
         "11.14",
         "10.19"
     ],
-    "use_celery": "y",
-    "broker": [
-        "redis",
-        "rabbitmq"
+    "celery_worker": [
+        "Redis",
+        "Rabbitmq",
+        "Do not use Celery"
     ]
 }

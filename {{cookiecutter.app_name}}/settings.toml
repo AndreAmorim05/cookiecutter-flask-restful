@@ -6,7 +6,7 @@ MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USE_SSL = true
 MAIL_DEBUG = false
-{% if cookiecutter.use_celery == "y" %}
+{% if cookiecutter.celery_worker != "Do not use Celery" %}
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
@@ -20,7 +20,7 @@ EXTENSIONS = [
     "{{cookiecutter.app_name}}.ext.hooks:init_app",
     "{{cookiecutter.app_name}}.ext.cors:init_app",
     "{{cookiecutter.app_name}}.ext.mail:init_app",
-    {% if cookiecutter.use_celery == "y" %}  
+    {% if cookiecutter.celery_worker != "Do not use Celery" %}  
     "{{cookiecutter.app_name}}.ext.celery:init_celery",
     {% endif %}
 ]
@@ -29,15 +29,13 @@ EXTENSIONS = [
 DEBUG = true
 SQLALCHEMY_DATABASE_URI = "postgresql://root:root@localhost/{{cookiecutter.app_name}}db"
 SQLALCHEMY_TRACK_MODIFICATIONS = false
-{% if cookiecutter.use_celery == "y" %}
-{% if cookiecutter.broker == "redis" %}
+{% if cookiecutter.celery_worker != "Do not use Celery" %}{% if cookiecutter.celery_worker == "Redis" %}
 CELERY_BROKER_URL = "redis://localhost/0"
 CELERY_RESULT_BACKEND = "redis://localhost/0"
 {% else %}
 CELERY_BROKER_URL = 'pyamqp://root:root@localhost//'
 CELERY_RESULT_BACKEND = 'rpc://root:root@localhost//'
-{% endif %}
-{% endif %}
+{% endif %}{% endif %}
 DEBUG_TB_TEMPLATE_EDITOR_ENABLED = true
 DEBUG_TB_PROFILER_ENABLED = true
 DEBUG_TB_INTERCEPT_REDIRECTS = false
